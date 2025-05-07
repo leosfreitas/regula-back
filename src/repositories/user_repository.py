@@ -30,7 +30,11 @@ class UsersRepository:
         user_model.save()
 
         return None
-    
+
+    def get_all_users(self) -> list[UserModel]:
+        result = UserModel.objects()
+        return result
+
     def find_by_email(self, email: str) -> list[UserModel]:
         result = UserModel.objects(email=email)
         return result
