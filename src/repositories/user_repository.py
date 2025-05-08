@@ -33,7 +33,16 @@ class UsersRepository:
 
     def get_all_users(self) -> list[UserModel]:
         result = UserModel.objects()
-        return result
+        users = []
+
+        for u in result:
+            user_dict = u.to_mongo().to_dict()
+            user_dict["_id"] = str(user_dict["_id"])
+            users.append(user_dict)
+
+        return users
+
+
 
     def find_by_email(self, email: str) -> list[UserModel]:
         result = UserModel.objects(email=email)
@@ -99,3 +108,10 @@ class UsersRepository:
     def update_phone(self, id: str, phone: str) -> None:
         UserModel.objects(id=id).update(set__phone = phone)
         return None
+    
+    def delete_user_by_id(self, id: str) -> bool:
+        user = UserModel.objects(id=id).first()
+        if user:
+            user.delete()
+            return True
+        return False
