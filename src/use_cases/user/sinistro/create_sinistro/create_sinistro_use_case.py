@@ -32,7 +32,7 @@ class CreateSinistroUseCase:
         )
 
 
-        sinistro = self.sinistro_repository.create_sinistro(user_id, sinistro_data)
+        sinistro = self.sinistro_repository.save(user_id, sinistro_data)
 
         response.status_code = 201
         return {"status": "success", "message": "Sinistro criado com sucesso", "sinistro": sinistro}
