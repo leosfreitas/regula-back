@@ -1,4 +1,4 @@
-from repositories.sinisitro_repository import SinistroRepository
+from repositories.sinistro_repository import SinistroRepository
 from use_cases.user.sinistro.get_sinistros.get_sinistros_use_case import GetSinistrosUseCase
 from fastapi import APIRouter, Depends, Request, Response
 from middlewares.validate_user_auth_token import validade_user_auth_token

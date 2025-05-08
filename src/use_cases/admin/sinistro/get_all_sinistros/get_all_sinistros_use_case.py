@@ -1,4 +1,4 @@
-from repositories.sinisitro_repository import SinistroRepository
+from repositories.sinistro_repository import SinistroRepository
 from fastapi import Request, Response
 
 class GetAllSinistros: 

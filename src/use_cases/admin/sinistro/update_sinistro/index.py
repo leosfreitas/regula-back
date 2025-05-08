@@ -1,6 +1,6 @@
 from use_cases.admin.sinistro.update_sinistro.update_sinistro_use_case import UpdateSinistroUseCase
 from use_cases.admin.sinistro.update_sinistro.update_sinistro_dto import UpdateSinistroDTO
-from repositories.sinisitro_repository import SinistroRepository
+from repositories.sinistro_repository import SinistroRepository
 from fastapi import Request, Response, APIRouter, Depends
 from middlewares.validate_admin_auth_token import validade_admin_auth_token
 

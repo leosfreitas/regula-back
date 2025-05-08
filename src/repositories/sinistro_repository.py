@@ -88,3 +88,11 @@ class SinistroRepository:
         sinistro.save()
 
         return sinistro        
+    
+    def delete_sinistro(self, sinistro_id: str) -> None:
+        sinistro = SinistroModel.objects(id=sinistro_id).first()
+        if not sinistro:
+            return None
+
+        sinistro.delete()
+        return None

@@ -1,4 +1,4 @@
-from repositories.sinisitro_repository import SinistroRepository    
+from repositories.sinistro_repository import SinistroRepository    
 from use_cases.user.sinistro.create_sinistro.create_sinistro_dto import CreateSinistroDTO
 from utils.get_session_info import *
 from fastapi import Request, Response

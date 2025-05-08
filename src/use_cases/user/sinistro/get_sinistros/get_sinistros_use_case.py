@@ -1,4 +1,4 @@
-from repositories.sinisitro_repository import SinistroRepository
+from repositories.sinistro_repository import SinistroRepository
 from utils.get_session_info import get_user_id
 from fastapi import Response, Request
 

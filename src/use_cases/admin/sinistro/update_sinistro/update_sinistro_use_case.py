@@ -1,4 +1,4 @@
-from repositories.sinisitro_repository import SinistroRepository
+from repositories.sinistro_repository import SinistroRepository
 from use_cases.admin.sinistro.update_sinistro.update_sinistro_dto import UpdateSinistroDTO
 from fastapi import Request, Response
 
