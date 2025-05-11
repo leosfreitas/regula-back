@@ -20,6 +20,15 @@ def get_user_email(request: Request) -> str:
     user_email = payload.get("email")
     return user_email
 
+def get_user_cpf(request: Request) -> str:
+    """
+    Get the user CPF from the request cookies.
+    """
+    token = request.cookies.get("user_auth_token")
+    payload = jwt.decode(token.split(" ")[1], os.getenv("USER_JWT_SECRET"), algorithms=["HS256"])
+    user_cpf = payload.get("cpf")
+    return str(user_cpf)
+
 def get_admin_id(request: Request) -> str:
     """
     Get the admin ID from the request cookies.

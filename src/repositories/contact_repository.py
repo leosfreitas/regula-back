@@ -48,3 +48,13 @@ class ContactRepository:
 
         contact.delete()
         return None
+
+    def update_status(self, contact_id: str, status: str) -> ContactModel:
+        contact = ContactModel.objects(id=contact_id).first()
+        if not contact:
+            return None
+
+        contact.status = status
+        contact.save()
+
+        return contact

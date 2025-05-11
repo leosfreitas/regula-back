@@ -13,8 +13,10 @@ class CreateSinistroUseCase:
 
     def execute(self, create_sinistro_dto: CreateSinistroDTO, response: Response, request: Request):
         user_id = get_user_id(request)
+        user_cpf = get_user_cpf(request)
+        print(user_cpf)
 
-        if not create_sinistro_dto.cnh or not create_sinistro_dto.cpf or not create_sinistro_dto.endereco or not create_sinistro_dto.data_acidente or not create_sinistro_dto.descricao:
+        if not create_sinistro_dto.cnh or not create_sinistro_dto.endereco or not create_sinistro_dto.data_acidente or not create_sinistro_dto.descricao:
             response.status_code = 406
             return {"status": "error", "message": " Sinistro não criado, pois falta informações"}
 
@@ -24,7 +26,7 @@ class CreateSinistroUseCase:
             status="Aberto",
             data=datetime.now(),
             cnh=create_sinistro_dto.cnh,
-            cpf=create_sinistro_dto.cpf,
+            cpf=user_cpf,
             endereco=create_sinistro_dto.endereco,
             data_acidente=create_sinistro_dto.data_acidente,
             descricao=create_sinistro_dto.descricao,

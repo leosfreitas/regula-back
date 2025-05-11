@@ -5,7 +5,6 @@ class CreateSinistroDTO(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     cnh: str
-    cpf: str
     endereco: str
     data_acidente: datetime 
     descricao: str
