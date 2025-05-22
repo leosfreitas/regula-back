@@ -18,7 +18,7 @@ def test():
 
 allowed_origins = [
     "http://localhost:5173",
-    "https://seu-frontend.herokuapp.com",
+    "https://regula-back-805c0d9fbbe1.herokuapp.com/",
     "https://seu-app.herokuapp.com"
 ]
 
