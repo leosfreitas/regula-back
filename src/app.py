@@ -19,7 +19,7 @@ def test():
 allowed_origins = [
     "http://localhost:5173",
     "https://regula-back-805c0d9fbbe1.herokuapp.com/",
-    "https://seu-app.herokuapp.com"
+    "https://regula-front-fb6r-oogyz5wlx-thiago-penhas-projects.vercel.app/"
 ]
 
 if os.getenv("ENVIRONMENT") == "production":
