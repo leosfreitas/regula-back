@@ -1,6 +1,7 @@
 from repositories.sinistro_repository import SinistroRepository
 from fastapi import Response
 from bson import ObjectId
+from classify import classify_claim
 
 class AnalyzeSinistroUseCase:
     def __init__(self, sinistro_repository: SinistroRepository) -> None:
@@ -22,13 +23,9 @@ class AnalyzeSinistroUseCase:
         for field in ['_id', 'user_id', 'status']:
             sinistro_dict.pop(field, None)
 
-        ### modelo do que seria.
+        novo_status = classify_claim(sinistro_dict)
 
-        modelo = "RODANDO O MODELO DE IA"
-
-        status = "RESPOSTA DO MODELO"
-
-        updated_sinistro = self.sinistro_repository.update_status(sinistro_id, status)
+        updated_sinistro = self.sinistro_repository.update_status(sinistro_id, novo_status)
         
         response.status_code = 200
-        return {"status": "success", "sinistro": sinistro_dict}
+        return {"status": "success","resultado" : novo_status, "sinistro": updated_sinistro}
