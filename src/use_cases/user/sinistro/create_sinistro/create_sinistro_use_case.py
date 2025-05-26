@@ -29,7 +29,6 @@ class CreateSinistroUseCase:
             age_of_vehicle=create_sinistro_dto.age_of_vehicle,
             base_policy=create_sinistro_dto.base_policy,
             make=create_sinistro_dto.make,
-            month_claimed=create_sinistro_dto.month_claimed,
             marital_status=create_sinistro_dto.marital_status,
             policy_type=create_sinistro_dto.policy_type,
             vehicle_category=create_sinistro_dto.vehicle_category,

@@ -19,9 +19,8 @@ class Sinistro(BaseModel):
     base_policy: Literal["Liability", "Collision", "All Perils"]
     age: int
     make: str
-    month_claimed: Literal["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     marital_status: Literal["Single", "Married", "Widow", "Divorced"]
-    policy_type: str
+    policy_type: Literal["Sedan - All Perils", "Sedan - Collision", "Sport - Collision", "Utility - All Perils", "Utility - Collision", "Sedan - Liability"]
     vehicle_category: Literal["Sedan", "Sport", "Utility"]
     deductible: int
     days_policy_accident: Literal["none", "1 to 7", "8 to 15", "15 to 30", "more than 30"]
