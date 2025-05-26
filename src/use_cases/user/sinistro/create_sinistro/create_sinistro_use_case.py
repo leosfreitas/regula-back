@@ -3,7 +3,6 @@ from use_cases.user.sinistro.create_sinistro.create_sinistro_dto import CreateSi
 from utils.get_session_info import *
 from fastapi import Request, Response
 from entities.sinistro import Sinistro
-from datetime import datetime 
 
 class CreateSinistroUseCase:
     sinistro_repository = SinistroRepository
@@ -19,7 +18,6 @@ class CreateSinistroUseCase:
             user_id=user_id,
             status="Aberto",
             
-            data=datetime.now(),
             accident_area=create_sinistro_dto.accident_area,
             sex=create_sinistro_dto.sex,
             age=create_sinistro_dto.age,

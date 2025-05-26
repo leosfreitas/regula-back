@@ -29,4 +29,3 @@ class Sinistro(BaseModel):
     past_number_of_claims: int
     age_of_policy_holder: int
     number_of_cars: int
-    data: datetime
