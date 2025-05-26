@@ -34,8 +34,9 @@ class LoginUseCase:
             value=f"Bearer {token}",
             httponly=True,
             expires=expiration,
-            secure=False,
-            samesite="None"
+            secure=True,
+            samesite="none",
+            path='/'
         )
 
 
