@@ -3,7 +3,7 @@ import smtplib
 from email.mime.text import MIMEText  
 from email.mime.multipart import MIMEMultipart
 
-sender = "testeps2fase@gmail.com" 
+sender = os.environ.get("GMAIL_USERNAME")
 password = os.environ.get("GMAIL_PASSWORD")
 
 def send_email(email, content):
