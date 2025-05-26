@@ -7,7 +7,7 @@ dotenv.load_dotenv()
 class Sinistro(BaseModel):
     _id: str
     user_id: str
-    status: Literal["Aberto", "Em análise", "Negado", "Aprovado", "Pago"]
+    status: Literal["Aberto", "Em análise", "Negado", "Aprovado"]
     accident_area: Literal["Urban", "Rural"]
     sex: Literal["Male", "Female"]
     fault: Literal["Policy Holder", "Third Party"]

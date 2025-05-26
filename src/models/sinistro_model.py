@@ -13,7 +13,7 @@ class SinistroModel(Document):
     sensitivity_fields = []
 
     user_id = StringField(required=True)
-    status = StringField(required=True, choices=["Aberto", "Em análise", "Negado", "Aprovado", "Pago"])
+    status = StringField(required=True, choices=["Aberto", "Em análise", "Negado", "Aprovado"])
     accident_area = StringField(required=True, choices=["Urban", "Rural"])
     sex = StringField(required=True, choices=["Male", "Female"])
     fault = StringField(required=True, choices=["Policy Holder", "Third Party"])
