@@ -23,7 +23,7 @@ allowed_origins = [
 ]
 
 if os.getenv("ENVIRONMENT") == "production":
-    allowed_origins = ["*"]
+    allowed_origins = ["https://regula-front-whxn.vercel.app/"]
 
 app.add_middleware(
     CORSMiddleware,
