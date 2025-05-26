@@ -1,6 +1,7 @@
 import pandas as pd
 import joblib
 from pathlib import Path
+import os 
 
 THRESHOLD = 0.193
 MARGIN = 0.03
@@ -36,21 +37,17 @@ age_vehicle_labels = {
 base_policy_labels = {"Liability": 0, "Collision": 1, "All Perils": 2}
 
 onehot_cols = [
+    "Age",
     "Make",
-    "MonthClaimed",
     "MaritalStatus",
     "PolicyType",
     "VehicleCategory",
-    "RepNumber",
     "Deductible",
     "Days_Policy_Accident",
     "Days_Policy_Claim",
     "PastNumberOfClaims",
     "AgeOfPolicyHolder",
-    "NumberOfSuppliments",
-    "AddressChange_Claim",
-    "NumberOfCars",
-    "Year",
+    "NumberOfCars"
 ]
 
 useless_cols = [
@@ -60,15 +57,20 @@ useless_cols = [
     "DayOfWeekClaimed",
     "WeekOfMonthClaimed",
     "PolicyNumber",
+    "MonthClaimed",
+    "RepNumber",
+    "NumberOfSuppliments",
+    "AddressChange_Claim",
+    "Year"
 ]
 
 template_cols = (
-    pd.read_parquet("artifacts/df_clean3.parquet")
+    pd.read_parquet(Path("src/use_cases/admin/sinistro/analyze_sinistro/artifacts/df_clean3.parquet"))
     .drop(columns=["FraudFound_P"])
     .columns.tolist()
 )
 
-model = joblib.load("artifacts/fraud_xgb_pipeline.pkl")
+model = joblib.load(Path("src/use_cases/admin/sinistro/analyze_sinistro/artifacts/fraud_xgb_pipeline.pkl"))
 
 def _preprocess(d: dict) -> pd.DataFrame:
     df = pd.DataFrame([d])

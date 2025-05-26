@@ -43,6 +43,7 @@ for route in routes:
     
     try:
         module = import_module(module_name)
+        print(f"Importando módulo: {module_name}")
         if hasattr(module, 'router'):
             app.include_router(module.router)
     except ModuleNotFoundError as e:
