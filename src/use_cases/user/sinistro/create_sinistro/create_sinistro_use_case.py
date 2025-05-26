@@ -13,28 +13,37 @@ class CreateSinistroUseCase:
 
     def execute(self, create_sinistro_dto: CreateSinistroDTO, response: Response, request: Request):
         user_id = get_user_id(request)
-        user_cpf = get_user_cpf(request)
-        print(user_cpf)
-
-        if not create_sinistro_dto.cnh or not create_sinistro_dto.endereco or not create_sinistro_dto.data_acidente or not create_sinistro_dto.descricao:
-            response.status_code = 406
-            return {"status": "error", "message": " Sinistro não criado, pois falta informações"}
-
-        
+        past_number_of_claims = len(self.sinistro_repository.get_sinistros_by_user_id(user_id))
 
         sinistro_data = Sinistro(
+            user_id=user_id,
             status="Aberto",
+            
             data=datetime.now(),
-            cnh=create_sinistro_dto.cnh,
-            cpf=user_cpf,
-            endereco=create_sinistro_dto.endereco,
-            data_acidente=create_sinistro_dto.data_acidente,
-            descricao=create_sinistro_dto.descricao,
-            user_id=user_id
+            accident_area=create_sinistro_dto.accident_area,
+            sex=create_sinistro_dto.sex,
+            age=create_sinistro_dto.age,
+            fault=create_sinistro_dto.fault,
+            police_report_filed=create_sinistro_dto.police_report_filed,
+            witness_present=create_sinistro_dto.witness_present,
+            agent_type=create_sinistro_dto.agent_type,
+            vehicle_price=create_sinistro_dto.vehicle_price,
+            age_of_vehicle=create_sinistro_dto.age_of_vehicle,
+            base_policy=create_sinistro_dto.base_policy,
+            make=create_sinistro_dto.make,
+            month_claimed=create_sinistro_dto.month_claimed,
+            marital_status=create_sinistro_dto.marital_status,
+            policy_type=create_sinistro_dto.policy_type,
+            vehicle_category=create_sinistro_dto.vehicle_category,
+            deductible=create_sinistro_dto.deductible,
+            days_policy_accident=create_sinistro_dto.days_policy_accident,
+            days_policy_claim=create_sinistro_dto.days_policy_claim,
+            past_number_of_claims=past_number_of_claims,
+            age_of_policy_holder=create_sinistro_dto.age_of_policy_holder,
+            number_of_cars=create_sinistro_dto.number_of_cars,
         )
-
 
         sinistro = self.sinistro_repository.save(user_id, sinistro_data)
 
         response.status_code = 201
-        return {"status": "success", "message": "Sinistro criado com sucesso", "sinistro": sinistro}
+        return {"status": "success", "message": "Sinistro criado com sucesso", "sinistro_id": str(sinistro.id)}

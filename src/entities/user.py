@@ -1,6 +1,7 @@
 import dotenv
 from pydantic import BaseModel
 from typing import Literal
+from datetime import datetime
 dotenv.load_dotenv()
 
 class User(BaseModel):

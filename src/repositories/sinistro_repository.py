@@ -76,3 +76,4 @@ class SinistroRepository:
 
         sinistro.delete()
         return None
+    
