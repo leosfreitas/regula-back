@@ -35,7 +35,7 @@ class LoginUseCase:
             httponly=True,
             expires=expiration,
             secure=False,
-            domain="localhost",  
+            samesite="None"  
         )
 
 
