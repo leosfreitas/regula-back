@@ -19,11 +19,11 @@ def test():
 allowed_origins = [
     "http://localhost:5173",
     "https://regula-back-805c0d9fbbe1.herokuapp.com/",
-    "https://regula-front-whxn.vercel.app/"
+    "https://regula-front-whxn.vercel.app"
 ]
 
 if os.getenv("ENVIRONMENT") == "production":
-    allowed_origins = ["https://regula-front-whxn.vercel.app/"]
+    allowed_origins = ["https://regula-front-whxn.vercel.app"]
 
 app.add_middleware(
     CORSMiddleware,
